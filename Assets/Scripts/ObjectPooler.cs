@@ -4,30 +4,28 @@ using UnityEngine;
 
 public class ObjectPooler : MonoBehaviour
 {
-    public static ObjectPooler sharedInstance;
+    public static ObjectPooler SharedInstance;
     public List<GameObject> pooledObjects;
     public GameObject objectsToPool;
     public int amountToPool;
 
     private void Awake()
     {
-        sharedInstance = this;
+        SharedInstance = this;
     }
     void Start()
     {
         pooledObjects = new List<GameObject>();
-        for(int i =0;  i < amountToPool; i++)
+        for(int i = 0; i < amountToPool; i++)
         {
-           GameObject obj = (GameObject)Instantiate(objectsToPool);
+            GameObject obj = (GameObject)Instantiate(objectsToPool);
             obj.SetActive(false);
             pooledObjects.Add(obj);
         }
-        
     }
-
     public GameObject GetPooledObject()
     {
-        for(int i =0; i < pooledObjects.Count; i++)
+        for(int i=0;i< pooledObjects.Count; i++)
         {
             if (!pooledObjects[i].activeInHierarchy)
             {
@@ -35,14 +33,5 @@ public class ObjectPooler : MonoBehaviour
             }
         }
         return null;
-    }
-
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

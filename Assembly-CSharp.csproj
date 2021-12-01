@@ -61,10 +61,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\BGScroll.cs" />
+    <Compile Include="Assets\Scripts\BgScroller.cs" />
     <Compile Include="Assets\Scripts\Boundary.cs" />
     <Compile Include="Assets\Scripts\BulletShots.cs" />
+    <Compile Include="Assets\Scripts\DestroyByContact.cs" />
+    <Compile Include="Assets\Scripts\GameController.cs" />
     <Compile Include="Assets\Scripts\ObjectPooler.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\RandomRotator.cs" />
+    <Compile Include="Assets\Scripts\Rotator.cs" />
     <None Include="Assets\3D Models\Spaceship\readme.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/jadeshwari.n/Documents/GitHub/MyProject/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>

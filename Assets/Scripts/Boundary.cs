@@ -11,8 +11,6 @@ public class Boundary : MonoBehaviour
         mainCamera = Camera.main;
         screenBounds = mainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, mainCamera.transform.position.z));
         this.transform.localScale = new Vector3(screenBounds.x * 2, 0.1f, screenBounds.y * 2);
-      
-        
     }
 
     // Update is called once per frame
@@ -23,10 +21,9 @@ public class Boundary : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
-        if(collision.gameObject.tag == "bullet")
+        if (collision.gameObject.tag == "bullet")
         {
             collision.gameObject.SetActive(false);
         }
     }
-    
 }
