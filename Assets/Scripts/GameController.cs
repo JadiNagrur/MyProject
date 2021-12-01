@@ -14,10 +14,10 @@ public class GameController : MonoBehaviour
     public float startWait;
     public float waveWait;
     public Text scoreText;
-    //public Text highscore;
+    public Text highscore;
     public int score;
-   // public GameObject powerUp;
-    //public GameObject gameOverPanel;
+    //public GameObject powerUp;
+    public GameObject gameOverPanel;
    [HideInInspector] public bool gameOver = false;
     public void Awake()
     {
@@ -37,11 +37,11 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Random.Range(0, 1000) == 28 && gameOver==false && FindObjectOfType<PlayerController>().GetComponent<PlayerController>().bullets_PowerUp == false)
+        /*if (Random.Range(0, 1000) == 28 && gameOver==false && FindObjectOfType<PlayerController>().GetComponent<PlayerController>().bullets_PowerUp == false)
         {
             Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), 0, screenBounds.y + 0.3f);
             //Instantiate(powerUp, spawnPosition, powerUp.transform.rotation);
-        }
+        }*/
     }
 
     IEnumerator SpawnWaves()
@@ -64,8 +64,19 @@ public class GameController : MonoBehaviour
 
                 yield return new WaitForSeconds(spawnWait);
             }
-            
-            
+            Vector3 sPosition = new Vector3(Random.Range(-screenBounds.x, screenBounds.x), 0, screenBounds.y + 0.3f);
+            Quaternion sRotation = Quaternion.identity;
+            GameObject enemy = this.GetComponent<EnemyPooler>().GetPooledObject();
+
+            if (enemy != null)
+            {
+                enemy.transform.position = sPosition;
+                enemy.transform.rotation = sRotation;
+                enemy.SetActive(true);
+            }
+
+
+            yield return new WaitForSeconds(waveWait);
         }
       
        
@@ -76,13 +87,15 @@ public class GameController : MonoBehaviour
     public void GameOver()
     {
         Time.timeScale = 0;
-        //gameOverPanel.SetActive(true);
+        gameOverPanel.SetActive(true);
         if (PlayerPrefs.GetInt("highscore") < score)
         {
             PlayerPrefs.SetInt("highscore", score);
-          
+            highscore.text = "High score: " + PlayerPrefs.GetInt("highscore").ToString();
+
         }
         //highscore.text = "High score: " + PlayerPrefs.GetInt("highscore").ToString();
+
     }
     public void Replay()
     {

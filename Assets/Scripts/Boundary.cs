@@ -29,6 +29,9 @@ public class Boundary : MonoBehaviour
         {
             collision.gameObject.SetActive(false);
         }
-        
+        if (collision.gameObject.tag == "enemyBullet")
+        {
+            collision.gameObject.SetActive(false);
+        }
     }
 }

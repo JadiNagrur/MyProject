@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     public float tilt;
     public Text timeTextPowerUp;
     public bool bullets_PowerUp = false;
-    private float time = 20.0f;
+    private float time = 10.0f;
 
     public Transform shotSpawn;
     public Transform shotSpawnLeft;
